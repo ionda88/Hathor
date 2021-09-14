@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PostagensComponent } from './postagens/postagens.component';
+import { InputtextComponent } from "./global/components/inputtext/inputtext.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -14,11 +16,14 @@ import { PostagensComponent } from './postagens/postagens.component';
     LoginComponent,
     HomeComponent,
     CadastroComponent,
-    PostagensComponent
+    PostagensComponent,
+    InputtextComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

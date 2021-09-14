@@ -1,1 +1,21 @@
-<p>postagens works!</p>
+<div class="container bg-white py-2">
+  <div class="row pt-2 pb-3">
+    <inputtext class="col-md-5" label="Filtro:" [campo]="deFiltroConteudo"
+               (onChange)="deFiltroConteudo = $event"></inputtext>
+    <div class="col-md-2 mt-3">
+      <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+        <span class="oi oi-magnifying-glass"></span>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:150px"
+       title="{{postagem.deMensagem}}" *ngFor="let postagem of listaPostagens">
+<!--    <span class="oi oi-{{menu.deIcone}} w-100 mt-4" style="font-size: 40px" aria-hidden="true"></span>-->
+    <div class="card-body">
+      <h3 class="card-text">{{postagem.deTitulo}}<br>
+      </h3>
+      <span class="card-text">{{postagem.deMensagem}}<br>
+      </span>
+    </div>
+  </div>
+</div>
