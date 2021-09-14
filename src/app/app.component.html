@@ -1,10 +1,11 @@
 <div class="d-flex wrapper" id="wrapper">
   <!-- Sidebar-->
   <div class="border-end bg-white" id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+    <div class="sidebar-heading border-bottom bg-light text-center">Logo da Hathor aqui maravilhoso</div>
     <div class="list-group list-group-flush">
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Home</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Login</a>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="">Home</a>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/login">Login</a>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/cadastro">Cadastro</a>
     </div>
   </div>
 <!--  &lt;!&ndash; Page content wrapper&ndash;&gt;-->
@@ -16,11 +17,11 @@
 
   <div class="container-fluid p-0">
     <div class="card" style="height: 100%;min-height: 100vh; border-radius: 0">
-      <div class="card-header" style="background-color: #ffffff;">
-        <div class="row w-100 m-0">
-<!--          <a>teste</a>-->
-        </div>
-      </div>
+<!--      <div class="card-header" style="background-color: #ffffff;">-->
+<!--        <div class="row w-100 m-0">-->
+<!--&lt;!&ndash;          <a>teste</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="card-body" style="background-color: #B88ED8">
         <div>
           <router-outlet></router-outlet>
