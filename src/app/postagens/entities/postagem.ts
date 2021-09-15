@@ -7,4 +7,5 @@ export class Postagem {
   deTitulo = "";
   deMensagem = "";
   dtPublicacao: Date;
+  deComentario = "";
 }

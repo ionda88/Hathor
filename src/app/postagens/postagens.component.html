@@ -4,18 +4,28 @@
                (onChange)="deFiltroConteudo = $event"></inputtext>
     <div class="col-md-2 mt-3">
       <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
-        <span class="oi oi-magnifying-glass"></span>
+        <span class="fa fa-search"></span>
       </button>
     </div>
   </div>
-  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:150px"
-       title="{{postagem.deMensagem}}" *ngFor="let postagem of listaPostagens">
+  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:14.5em" *ngFor="let postagem of listaPostagens">
 <!--    <span class="oi oi-{{menu.deIcone}} w-100 mt-4" style="font-size: 40px" aria-hidden="true"></span>-->
     <div class="card-body">
       <h3 class="card-text">{{postagem.deTitulo}}<br>
       </h3>
       <span class="card-text">{{postagem.deMensagem}}<br>
       </span>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="row">
+      <inputtext class="col-md-10" label="Comentário:" [campo]="postagem.deComentario"
+                 (onChange)="postagem.deComentario = $event"></inputtext>
+      <div class="col-md-2 mt-3">
+        <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+          <span class="fa fa-paper-plane"></span>
+        </button>
+      </div>
+      </div>
     </div>
   </div>
 </div>
