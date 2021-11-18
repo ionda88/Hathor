@@ -1,0 +1,25 @@
+<div class="container bg-white py-2" *ngIf="!viewTopicos">
+  <div class="row pt-2 pb-3">
+    <inputtext class="col-md-5" label="Filtro:" [campo]="deFiltroConteudo"
+               (onChange)="deFiltroConteudo = $event"></inputtext>
+    <div class="col-md-2 mt-3">
+      <button (click)="buscaTopicos()" type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+        <span class="fa fa-search"></span>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" title="Clique para visualizar as postagens desse tópico" style="height:8.5em" *ngFor="let topico of listaTopicos">
+    <div class="card-body">
+      <h3 class="card-text">{{topico.nomeTopico}}<br>
+      </h3>
+      <span class="card-text">{{topico.descricaoTopico}}<br>
+      </span>
+
+      <button (click)="visualizarPostagens(topico)" type="button" style="color: #fff; background-color: #2F1E4A" class="btn btn-info mt-2 ml-3 btn-sm">
+        <span class="fa fa-users">Visualizar</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-postagens *ngIf="viewTopicos" [topicoSelecionado]="topicoSelecionado" (resposta)="retornoPostagens()"></app-postagens>

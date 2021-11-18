@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       result => {
         if(result != null) {
           let usuario: Usuario = result;
-          window.alert("Logado com sucesso!");
+          //window.alert("Logado com sucesso!");
           this.authGuardService.login();
           let sessionId = 123456789;
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           };
 
           // Navigate to the login page with extras
-          this.router.navigate(['/postagens'], navigationExtras);
+          this.router.navigate(['/topicos'], navigationExtras);
         } else {
           window.alert("Email e/ou Senha incorretos!");
         }

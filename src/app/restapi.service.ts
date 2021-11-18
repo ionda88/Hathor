@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Usuario} from "./models/usuario";
+import {Topico} from "./models/topico";
+import {Postagem} from "./models/postagem";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +23,15 @@ export class RestapiService {
   login(usuario: Usuario) {
     //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
     return this.http.post<Usuario>("http://localhost:8080/api/validaLogin", usuario, this.montaHttpOptions());
+  }
+
+  getTopicos() {
+    //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
+    return this.http.get<Topico[]>("http://localhost:8080/api/getTopicos");
+  }
+
+  listaPostagensTopicos(topicoSelecionado: Topico) {
+    //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
+    return this.http.post<Postagem[]>("http://localhost:8080/api/listaPostagensTopicos", topicoSelecionado, this.montaHttpOptions());
   }
 }

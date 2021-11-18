@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {RestapiService} from "./restapi.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthGuardService} from "./auth-guard.service";
+import {TopicosComponent} from "./topicos/topicos.component";
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {AuthGuardService} from "./auth-guard.service";
     CadastroComponent,
     PostagensComponent,
     InputtextComponent,
-
+    TopicosComponent
   ],
   imports: [
     BrowserModule,

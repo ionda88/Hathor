@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Postagem} from "./entities/postagem";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Postagem} from "../models/postagem";
+import {Topico} from "../models/topico";
+import {RestapiService} from "../restapi.service";
 
 @Component({
   selector: 'app-postagens',
@@ -11,28 +13,26 @@ export class PostagensComponent implements OnInit {
   deFiltroConteudo = "";
 
   listaPostagens: Postagem[] = [];
-  constructor() { }
+  constructor(private service: RestapiService) { }
+  @Input() topicoSelecionado: Topico;
+  @Output() resposta = new EventEmitter();
 
   ngOnInit(): void {
-    let postagemExemplo1 = new Postagem();
-    postagemExemplo1.id.idPostagem = 1;
-    postagemExemplo1.deTitulo = "Postagem 1"
-    postagemExemplo1.deMensagem = "\n" +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet orci ut erat ultricies porttitor. Suspendisse fermentum ut tellus non convallis. Vivamus hendrerit ipsum vel nisi elementum condimentum. Nunc diam eros, ultricies non neque tempus, tincidunt vehicula enim. Duis mattis sodales justo non venenatis. Nullam vitae finibus lacus. Suspendisse."
-
-    let postagemExemplo2 = new Postagem();
-    postagemExemplo2.id.idPostagem = 2;
-    postagemExemplo2.deTitulo = "Postagem 2"
-    postagemExemplo2.deMensagem = "\n" +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet orci ut erat ultricies porttitor. Suspendisse fermentum ut tellus non convallis. Vivamus hendrerit ipsum vel nisi elementum condimentum. Nunc diam eros, ultricies non neque tempus, tincidunt vehicula enim. Duis mattis sodales justo non venenatis. Nullam vitae finibus lacus. Suspendisse."
-
-    let postagemExemplo3 = new Postagem();
-    postagemExemplo3.id.idPostagem = 3;
-    postagemExemplo3.deTitulo = "Postagem 3"
-    postagemExemplo3.deMensagem = "\n" +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet orci ut erat ultricies porttitor. Suspendisse fermentum ut tellus non convallis. Vivamus hendrerit ipsum vel nisi elementum condimentum. Nunc diam eros, ultricies non neque tempus, tincidunt vehicula enim. Duis mattis sodales justo non venenatis. Nullam vitae finibus lacus. Suspendisse."
-
-    this.listaPostagens = [postagemExemplo1, postagemExemplo2, postagemExemplo3];
+    this.buscaPostagemTopico();
   }
 
+  buscaPostagemTopico() {
+    //window.alert("email:" + this.usuarioAtual.email + " | senha" + this.usuarioAtual.senha);
+    this.service.listaPostagensTopicos(this.topicoSelecionado).subscribe(
+      result => {
+        if(result != null) {
+          this.listaPostagens = result;
+        }
+      }
+    );
+  }
+
+  voltar() {
+    this.resposta.emit();
+  }
 }

@@ -5,13 +5,15 @@ import {HomeComponent} from "./home/home.component";
 import {CadastroComponent} from "./cadastro/cadastro.component";
 import {PostagensComponent} from "./postagens/postagens.component";
 import {AuthGuardService} from "./auth-guard.service";
+import {TopicosComponent} from "./topicos/topicos.component";
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  //{ path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'postagens', component: PostagensComponent, canActivate: [AuthGuardService] },
+  { path: 'topicos', component: TopicosComponent, canActivate: [AuthGuardService] },
   { path: '',   redirectTo: 'login', pathMatch: 'full' },
 ];
 
