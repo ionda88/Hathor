@@ -20,6 +20,6 @@ export class RestapiService {
 
   login(usuario: Usuario) {
     //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
-    return this.http.post<Usuario>("http://localhost:8080/noAuth/rest/validaLogin", usuario, this.montaHttpOptions());
+    return this.http.post<Usuario>("http://localhost:8080/api/validaLogin", usuario, this.montaHttpOptions());
   }
 }

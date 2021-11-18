@@ -11,6 +11,8 @@ import { InputtextComponent } from "./global/components/inputtext/inputtext.comp
 import {FormsModule} from "@angular/forms";
 import {RestapiService} from "./restapi.service";
 import {HttpClientModule} from "@angular/common/http";
+import {AuthGuardService} from "./auth-guard.service";
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     HttpClientModule
   ],
-  providers: [RestapiService],
+  providers: [RestapiService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
