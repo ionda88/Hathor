@@ -8,15 +8,15 @@
     </div>
     <div class="form-group py-2">
       <!--      <label for="inputEmail">Email</label>-->
-      <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+      <input type="text" [(ngModel)]="usuarioAtual.nome" class="form-control" id="inputNome" placeholder="Nome">
     </div>
     <div class="form-group py-2">
       <!--      <label for="inputEmail">Email</label>-->
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+      <input type="email" [(ngModel)]="usuarioAtual.email" class="form-control" id="inputEmail" placeholder="Email">
     </div>
     <div class="form-group py-2">
       <!--      <label for="exampleInputPassword1">Senha</label>-->
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+      <input type="password" [(ngModel)]="usuarioAtual.senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
     </div>
     <button type="submit" class="btn p-2 col-md-12" style="color: #fff; background-color: #2F1E4A">Sign up</button>
 <!--    <div class="col-12 text-center">-->

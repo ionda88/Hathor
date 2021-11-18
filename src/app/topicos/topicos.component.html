@@ -6,6 +6,9 @@
       <button (click)="buscaTopicos()" type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
         <span class="fa fa-search"></span>
       </button>
+      <button (click)="addTopico()" type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+        <span class="fa fa-plus"></span>
+      </button>
     </div>
   </div>
   <div class="col-md-12 card my-2 shadow-sm bg-white rounded" title="Clique para visualizar as postagens desse tópico" style="height:8.5em" *ngFor="let topico of listaTopicos">

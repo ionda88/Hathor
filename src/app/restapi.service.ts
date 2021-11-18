@@ -25,6 +25,11 @@ export class RestapiService {
     return this.http.post<Usuario>("http://localhost:8080/api/validaLogin", usuario, this.montaHttpOptions());
   }
 
+  signUp(usuario: Usuario) {
+    //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
+    return this.http.post<Usuario>("http://localhost:8080/api/signUp", usuario, this.montaHttpOptions());
+  }
+
   getTopicos() {
     //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
     return this.http.get<Topico[]>("http://localhost:8080/api/getTopicos");

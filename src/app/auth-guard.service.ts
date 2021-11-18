@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, NavigationExtras, Router} from '@angular/router';
+import {Usuario} from "./models/usuario";
 
 
 @Injectable({
@@ -9,6 +10,7 @@ export class AuthGuardService implements CanActivate {
 
   constructor(private router: Router) { }
   private isAuthenticated: boolean = false;
+  public usuarioAtual = new Usuario();
 
   canActivate() {
     if(this.isAuthenticated) {return true}
