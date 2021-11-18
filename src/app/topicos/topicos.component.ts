@@ -42,4 +42,8 @@ export class TopicosComponent implements OnInit {
     this.topicoSelecionado = new Topico();
     this.viewTopicos = false;
   }
+
+  addTopico() {
+
+  }
 }

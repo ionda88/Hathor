@@ -32,10 +32,6 @@ export class PostagensComponent implements OnInit {
     );
   }
 
-  addTopico() {
-
-  }
-
   voltar() {
     this.resposta.emit();
   }
