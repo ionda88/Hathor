@@ -39,4 +39,12 @@ export class RestapiService {
     //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(email+":"+senha)});
     return this.http.post<Postagem[]>("http://localhost:8080/api/listaPostagensTopicos", topicoSelecionado, this.montaHttpOptions());
   }
+
+  salvarNovoTopico(novoTopico: Topico) {
+    return this.http.post<Usuario>("http://localhost:8080/api/salvarNovoTopico", novoTopico, this.montaHttpOptions());
+  }
+
+  salvarNovaPostagem(novaPostagem: Postagem) {
+    return this.http.post<Usuario>("http://localhost:8080/api/salvarNovaPostagem", novaPostagem, this.montaHttpOptions());
+  }
 }

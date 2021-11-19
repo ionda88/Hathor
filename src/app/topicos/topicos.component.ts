@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Postagem} from "../models/postagem";
 import {Topico} from "../models/topico";
 import {RestapiService} from "../restapi.service";
 import {Usuario} from "../models/usuario";
 import {NavigationExtras} from "@angular/router";
+import {ModalDirective} from "ngx-bootstrap/modal";
+import {AuthGuardService} from "../auth-guard.service";
 
 @Component({
   selector: 'app-topicos',
@@ -16,7 +18,11 @@ export class TopicosComponent implements OnInit {
   viewTopicos = false;
   topicoSelecionado: Topico = new Topico();
   listaTopicos: Topico[] = [];
-  constructor(private service: RestapiService) { }
+
+  @ViewChild('modalNovoTopico', {static: false}) modalNovoTopico: ModalDirective;
+  novoTopico: Topico = new Topico();
+  constructor(private service: RestapiService,
+              public authGuardService: AuthGuardService) { }
 
   ngOnInit(): void {
     this.buscaTopicos();
@@ -44,6 +50,23 @@ export class TopicosComponent implements OnInit {
   }
 
   addTopico() {
+    this.novoTopico = new Topico();
+    this.novoTopico.idUsuario = this.authGuardService.usuarioAtual.id;
+    this.modalNovoTopico.config.ignoreBackdropClick = true;
+    this.modalNovoTopico.show();
+  }
 
+  fechaNovoTopico(){
+    this.novoTopico = new Topico();
+    this.modalNovoTopico.hide();
+  }
+
+  salvarNovoTopico() {
+    this.service.salvarNovoTopico(this.novoTopico).subscribe(
+      result => {
+        this.fechaNovoTopico();
+        this.buscaTopicos();
+      }
+    );
   }
 }

@@ -9,7 +9,7 @@ import {Usuario} from "./models/usuario";
 export class AuthGuardService implements CanActivate {
 
   constructor(private router: Router) { }
-  private isAuthenticated: boolean = false;
+  public isAuthenticated: boolean = false;
   public usuarioAtual = new Usuario();
 
   canActivate() {
@@ -30,5 +30,21 @@ export class AuthGuardService implements CanActivate {
 
   login() {
     this.isAuthenticated = true;
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+    this.usuarioAtual = new Usuario();
+    let sessionId = 123456789;
+
+    // Set our navigation extras object
+    // that contains our global query params and fragment
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'session_id': sessionId },
+      fragment: 'anchor'
+    };
+
+    // Navigate to the login page with extras
+    this.router.navigate(['/login'], navigationExtras);
   }
 }

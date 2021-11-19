@@ -13,7 +13,7 @@ import {RestapiService} from "./restapi.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthGuardService} from "./auth-guard.service";
 import {TopicosComponent} from "./topicos/topicos.component";
-
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import {TopicosComponent} from "./topicos/topicos.component";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [RestapiService,AuthGuardService],
   bootstrap: [AppComponent]

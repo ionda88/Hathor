@@ -1,0 +1,12 @@
+.layout-table {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.moldura {
+  border: 1px solid #CCC;
+  margin: 0;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-y: auto;
+  overflow-x: auto;
+}

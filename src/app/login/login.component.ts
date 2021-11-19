@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.service.login(this.usuarioAtual).subscribe(
       result => {
         if(result != null) {
-          let usuario: Usuario = result;
+          this.authGuardService.usuarioAtual = result;
           //window.alert("Logado com sucesso!");
           this.authGuardService.login();
           let sessionId = 123456789;

@@ -1,33 +1,61 @@
 <div class="container bg-white py-2">
-  <div class="row pt-2 pb-3">
-    <inputtext class="col-md-5" label="Filtro:" [campo]="deFiltroConteudo"
-               (onChange)="deFiltroConteudo = $event"></inputtext>
-    <div class="col-md-2 mt-3">
-      <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
-        <span class="fa fa-search"></span>
-      </button>
-    </div>
+  <div class="row pt-2 pb-3 text-center">
+    <h2>{{topicoSelecionado.nomeTopico}}</h2>
+    <h6>{{topicoSelecionado.descricaoTopico}}</h6>
   </div>
-  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:14.5em" *ngFor="let postagem of listaPostagens">
-    <div class="card-body">
-      <h3 class="card-text">{{postagem.titulo}}<br>
-      </h3>
-      <span class="card-text">{{postagem.corpo}}<br>
-      </span>
-    </div>
-    <!--<div class="card-footer bg-white">
-      <div class="row">
-      <inputtext class="col-md-10" label="Comentário:" [campo]="postagem.deComentario"
-                 (onChange)="postagem.deComentario = $event"></inputtext>
+  <div class="moldura">
+    <div class="row pt-2 pb-3">
+      <inputtext class="col-md-5" label="Filtro:" [campo]="deFiltroConteudo"
+                 (onChange)="deFiltroConteudo = $event"></inputtext>
       <div class="col-md-2 mt-3">
         <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
-          <span class="fa fa-paper-plane"></span>
+          <span class="fa fa-search"></span>
+        </button>
+        <button (click)="addPostagem()" type="button" title="Adicionar Postagem"
+                class="btn btn-success mt-2 pl-2 ml-3 btn-sm">
+          <span class="fa fa-plus"></span>
         </button>
       </div>
+    </div>
+    <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:6.5em"
+         *ngFor="let postagem of listaPostagens">
+      <div class="card-body">
+        <h3 class="card-text">{{postagem.titulo}} - {{postagem.nomeUsuario}}<br>
+        </h3>
+        <span class="card-text">{{postagem.corpo}}<br>
+      </span>
       </div>
-    </div>-->
+    </div>
   </div>
   <button type="button" class="btn btn-default border btn-sm mt-1 float-left" (click)="voltar()">
     Voltar
   </button>
+</div>
+
+<div bsModal [config]="{ignoreBackdropClick: true, keyboard: false}" #modalNovaPostagem="bs-modal" class="modal fade"
+     tabindex="-1" role="dialog"
+     aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id="loaderModal"></div>
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left text-primary"> Nova Postagem
+        </h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="fechaNovaPostagem()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center" id="paginaModal">
+        <div class="row m-2">
+          <inputtext class="col-md-5" label="Título:" name="nomenovaPostagem" [campo]="novaPostagem.titulo"
+                     (onChange)="novaPostagem.titulo = $event"></inputtext>
+          <inputtext class="col-md-7" label="Corpo:" name="descricaonovaPostagem" [campo]="novaPostagem.corpo"
+                     (onChange)="novaPostagem.corpo = $event"></inputtext>
+        </div>
+        <button type="button" (click)="salvarNovaPostagem()" class="btn btn-success btn-sm mt-1 mx-1">
+          <span class="fa fa-save"></span>&nbsp;Salvar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

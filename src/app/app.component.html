@@ -11,10 +11,15 @@
 <!--                margin-right: auto;-->
 <!--                display: block;">-->
     <div class="list-group list-group-flush">
+      <a *ngIf="authGuardService.isAuthenticated" class="list-group-item list-group-item-action list-group-item-light p-3">{{authGuardService.usuarioAtual.nome}}</a>
+      <a *ngIf="authGuardService.isAuthenticated" class="list-group-item list-group-item-action list-group-item-light p-3">{{authGuardService.usuarioAtual.email}}</a>
+      <a *ngIf="authGuardService.isAuthenticated" (click)="authGuardService.logout()" class="list-group-item list-group-item-action list-group-item-light p-3">Sair  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+
       <!--<a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="">Home</a>-->
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/login">Login</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/cadastro">Cadastro</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/postagens">Postagens</a>
+<!--      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/login">Login</a>-->
+<!--      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/cadastro">Cadastro</a>-->
+<!--      <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/postagens">Postagens</a>-->
+
     </div>
   </div>
 <!--  &lt;!&ndash; Page content wrapper&ndash;&gt;-->

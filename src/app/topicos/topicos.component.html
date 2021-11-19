@@ -6,23 +6,59 @@
       <button (click)="buscaTopicos()" type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
         <span class="fa fa-search"></span>
       </button>
-      <button (click)="addTopico()" type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+      <button (click)="addTopico()" type="button" title="Adicionar Tópico"
+              class="btn btn-success mt-2 pl-2 ml-3 btn-sm">
         <span class="fa fa-plus"></span>
       </button>
     </div>
   </div>
-  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" title="Clique para visualizar as postagens desse tópico" style="height:8.5em" *ngFor="let topico of listaTopicos">
+  <div class="col-md-12 card my-2 shadow-sm bg-white rounded" title="Clique para visualizar as postagens desse tópico"
+       style="height:8.5em" *ngFor="let topico of listaTopicos">
     <div class="card-body">
       <h3 class="card-text">{{topico.nomeTopico}}<br>
       </h3>
       <span class="card-text">{{topico.descricaoTopico}}<br>
       </span>
 
-      <button (click)="visualizarPostagens(topico)" type="button" style="color: #fff; background-color: #2F1E4A" class="btn btn-info mt-2 ml-3 btn-sm">
+      <button (click)="visualizarPostagens(topico)" type="button" style="color: #fff; background-color: #2F1E4A"
+              class="btn btn-info mt-2 ml-3 btn-sm">
         <span class="fa fa-users">Visualizar</span>
       </button>
     </div>
   </div>
 </div>
 
-<app-postagens *ngIf="viewTopicos" [topicoSelecionado]="topicoSelecionado" (resposta)="retornoPostagens()"></app-postagens>
+<div bsModal [config]="{ignoreBackdropClick: true, keyboard: false}" #modalNovoTopico="bs-modal" class="modal fade"
+     tabindex="-1" role="dialog"
+     aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id="loaderModal"></div>
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left text-primary"> Novo Tópico
+        </h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="fechaNovoTopico()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center" id="paginaModal">
+        <div class="row m-2">
+          <inputtext class="col-md-5" label="Nome:" name="nomeNovoTopico" [campo]="novoTopico.nomeTopico"
+                     (onChange)="novoTopico.nomeTopico = $event"></inputtext>
+          <inputtext class="col-md-7" label="Descrição:" name="descricaoNovoTopico" [campo]="novoTopico.descricaoTopico"
+                     (onChange)="novoTopico.descricaoTopico = $event"></inputtext>
+<!--          <label>Descrição:</label>-->
+<!--          <textarea class="form-control input-sm"-->
+<!--                    [(ngModel)]="novoTopico.descricaoTopico" name="descricaoNovoTopico"-->
+<!--                    style="resize: none" rows="5"></textarea>-->
+        </div>
+        <button type="button" (click)="salvarNovoTopico()" class="btn btn-success btn-sm mt-1 mx-1">
+          <span class="fa fa-save"></span>&nbsp;Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-postagens *ngIf="viewTopicos" [topicoSelecionado]="topicoSelecionado"
+               (resposta)="retornoPostagens()"></app-postagens>
