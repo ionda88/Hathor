@@ -52,6 +52,7 @@ export class TopicosComponent implements OnInit {
   addTopico() {
     this.novoTopico = new Topico();
     this.novoTopico.idUsuario = this.authGuardService.usuarioAtual.id;
+    this.novoTopico.dtCriacao = new Date();
     this.modalNovoTopico.config.ignoreBackdropClick = true;
     this.modalNovoTopico.show();
   }

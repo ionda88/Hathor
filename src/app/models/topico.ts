@@ -4,4 +4,5 @@ export class Topico {
   descricaoTopico: string;
   idUsuario: number;
   idTopico: number;
+  dtCriacao: Date;
 }

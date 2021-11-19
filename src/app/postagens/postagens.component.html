@@ -8,7 +8,7 @@
       <inputtext class="col-md-5" label="Filtro:" [campo]="deFiltroConteudo"
                  (onChange)="deFiltroConteudo = $event"></inputtext>
       <div class="col-md-2 mt-3">
-        <button type="button" class="btn btn-primary mt-2 ml-3 btn-sm">
+        <button type="button" (click)="buscaPostagemTopico()" class="btn btn-primary mt-2 ml-3 btn-sm">
           <span class="fa fa-search"></span>
         </button>
         <button (click)="addPostagem()" type="button" title="Adicionar Postagem"
@@ -17,13 +17,16 @@
         </button>
       </div>
     </div>
-    <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:6.5em"
+    <div class="col-md-12 card my-2 shadow-sm bg-white rounded" style="height:11em"
          *ngFor="let postagem of listaPostagens">
+      <div class="card-header">
+        <h3><strong>{{postagem.titulo}}</strong></h3>
+      </div>
       <div class="card-body">
-        <h3 class="card-text">{{postagem.titulo}} - {{postagem.nomeUsuario}}<br>
-        </h3>
-        <span class="card-text">{{postagem.corpo}}<br>
-      </span>
+        {{postagem.corpo}}
+      </div>
+      <div class="card-footer">
+        <small class="text-secondary">{{postagem.nomeUsuario}} - {{postagem.dtPostagem | date:'dd/MM/yyyy'}}</small>
       </div>
     </div>
   </div>

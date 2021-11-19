@@ -14,9 +14,11 @@
   </div>
   <div class="col-md-12 card my-2 shadow-sm bg-white rounded" title="Clique para visualizar as postagens desse tópico"
        style="height:8.5em" *ngFor="let topico of listaTopicos">
-    <div class="card-body">
+    <div class="card-header">
       <h3 class="card-text">{{topico.nomeTopico}}<br>
       </h3>
+      </div>
+      <div class="card-body">
       <span class="card-text">{{topico.descricaoTopico}}<br>
       </span>
 
